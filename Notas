@@ -1,0 +1,18 @@
+1. Implementar los stacks como listas circulares enlazadas.
+	* Al principio creas la lista con un nodo para cada número y otra vacía.
+	* Los nodos una vez creados no se borran y se destruyen. De forma que el número de mallocs y frees no será muy alto.
+	* Pese a todo es mejor que estén alocados en memoria por si te meten una cantidad de números grandes, aunque sabemos que
+		en principio no te deberian pasar más de 5000. Aún así nos podrían crear un segmentation fault con un número muy grande, así
+		que no podemos hacerlo en estático.
+
+2. Chequeamos el número de argumentos. Al menos dos y el segundo no debe estar vacío. 
+
+2. El parseo (que sean números y que no se repitan podría ser previo o según cargamos la estructura).
+	* Si nos lo meten en forma de cadena hacemos un split.
+	* Hacemos chequeo de formato. Puede ser dentro o fuera del itoa. Pero yo lo haría antes del itoa en sí.
+	* Tenemos que hacer un itoa. Hay que tener cuidado con el caso de overflow o underflow. Una opción es compararlo con el número como
+		sting antes de la conversión. Otra convertir long int y hacer la comparación.
+	* Tenemos que chequear que no haya repetidos. Para ello hay que llevar una registro de los números leídos.
+
+
+3. Implementación del algoritmo. El turco.
