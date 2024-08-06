@@ -24,7 +24,6 @@ ft_printf: subject $(patsubst %.c, %.o, $(wildcard ./ft_printf/mandatory/*.c))
 
 ft_gnl: subject $(patsubst %.c, %.o, $(wildcard ./ft_gnl/mandatory/*.c))
 
-
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
