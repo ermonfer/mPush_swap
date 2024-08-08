@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:51:54 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/02 20:26:24 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/07 19:12:49 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (lst == NULL || del == NULL)
 		return ;
-	del(lst -> content);
+	del(lst->content);
 	free(lst);
 }

@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   pswap.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 17:53:32 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/07 19:13:53 by fmontero         ###   ########.fr       */
+/*   Created: 2024/08/07 17:26:00 by fmontero          #+#    #+#             */
+/*   Updated: 2024/08/08 15:59:50 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int	ft_lstsize(t_list *lst)
+typedef struct s_node
 {
-	int		i;
+	int				nb;
+	struct s_node	*prev;
+	struct s_node	*next;
+}	t_node;
 
-	i = 0;
-	while (lst != NULL)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
-}
+typedef struct s_stacks
+{
+	int				capacity;
+	int				a_size;
+	struct s_node	*a_head;
+	struct s_node	*b_head;
+	struct s_node	nodes[];
+}	t_stacks;

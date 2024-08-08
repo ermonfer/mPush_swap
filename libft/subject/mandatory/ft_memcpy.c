@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmontero <fmontero@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:48:02 by fmontero          #+#    #+#             */
-/*   Updated: 2024/04/19 20:54:09 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/07 18:55:57 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
