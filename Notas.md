@@ -1,22 +1,15 @@
 1. Paseo. Esto hay que hacerlo si o si.
-	- Todos los argumentos que te pasan son como arrays. Ha estos arrays a que hacerles un split para espacios. Solo reconoce espacios. Una quitado los espacios mirar que son numeros, y una vez hecho esto comprobar que estan en int. La forma más es pasar a atol. Las comprobaciones después de los espacios lo puedes ir cargando en las estructruas ya que ahora sabes lo que ocupan en caso de que todo salga bien. Una vez cargados en un array los ordenas para comprobar que no hay dobles. Estas listo ahora para empezar a ordenar tu pila.
+	- Todos los argumentos que te pasan son como arrays. A estos arrays a que hacerles un split para espacios. Solo reconoce espacios. Una quitado los espacios mirar que son numeros, y una vez hecho esto comprobar que estan en int. La forma más es pasar a atol. Las comprobaciones después de los espacios lo puedes ir cargando en las estructruas ya que ahora sabes lo que ocupan en caso de que todo salga bien. Una vez cargados en un array los ordenas para comprobar que no hay dobles. Estas listo ahora para empezar a ordenar tu pila.
 
 2. Caso base de ordenación.
 	- De momento lo dejamos en una función que ordene a 3 elementos y después vemos si inclimos también como básicos los casos 4 o 5.
 
 3. Ordenación por el Turco.
 	- El bucle básico es el mismo en las dos fases. Tenemos que sacar el coste de colorcar cada elememento encima del Target.
+
 		* Puedes implementarlo primero para todos y luego ver cuando puedes dejar de calcular.
-		* El bucle de cálculo de coste es el centro del algoritmo y marca la estructura
-		de datos usada en función de la cantidad de movimientos y de veces que tengas que recorrer la línea. Básicamente esto es el push-swap. La buena noticia es que en
-		cuanto saques esto ya lo tienes.
-			- Buscas para cada número de tu pila a:
-				* El target de la pila b. Te requiere recorrer la pila b una vez por elemento. Aunque es una pila que ya esta ordenada, luego no hace falta recorrerla entera.
-				* Calculo de movimientos, deberías sacarlo sabiendo la posición de ambos elementos en sus respectivas pilas, lo que es algo que sabes en ambos casos simplemente porque has ido recorriendo la pila.
-				? Quizá merece la pena para estas cosas calcular la posición de la mediana. Es fácil con ambas estructuras.
-				* Es simplemente calcular el número de movimientos que le hace falta en cada caso para arriba y para abajo. Y quedarte con el máximo de ambos movimientos en una misma dirección.
-				* Cuando tienes el máximo de todos, simplemente efectuas los movimientos, es decir, actualizas las pilas y almacenas el texto necesario para devolver.
-				* El texto necesario para devolver lo puedes ir alamacenando ahora así, en una estructura de array más puntero a la siguiente lista. Es posible que es un trabajo que no necesites pero prefiero que sea robusto.
+
+		* El bucle de cálculo de coste es el centro del algoritmo y marca la estructura de datos usada en función de la cantidad de movimientos y de veces que tengas que recorrer la línea. Básicamente esto es el push-swap. La buena noticia es que en cuanto saques esto ya lo tienes.
 
 
 //Declare pointers to two data structures/linked lists, one for stack `a` and another for `b`
