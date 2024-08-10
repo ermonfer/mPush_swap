@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:57:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/09 21:22:27 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:49:46 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_stacks	*init_stacks(int arr[], int capacity)
 {
 	t_stacks	*stacks;
-	t_node		*current;
+	t_node		*cur;
 
 	stacks = malloc(sizeof (t_stacks) + capacity * sizeof (t_node));
 	if (stacks == NULL)
@@ -24,75 +24,81 @@ t_stacks	*init_stacks(int arr[], int capacity)
 	stacks->a_size = capacity;
 	stacks->a_head = stacks->nodes;
 	stacks->b_head = NULL;
-	stacks->extreme = NULL;
-	current = stacks->nodes;
+	stacks->extreme.node = NULL;
+	cur = stacks->nodes;
 	while (--capacity)
 	{
-		current->value = *(arr++);
-		current->next = current + 1;
-		(current + 1)->prev = current;
-		current++;
+		cur->value = *(arr++);
+		cur->next = cur + 1;
+		(cur + 1)->prev = cur;
+		cur++;
 	}
-	current->value = *arr;
-	current->prev = current -1;
-	current->next = stacks->nodes;
+	cur->value = *arr;
+	cur->prev = cur -1;
+	cur->next = stacks->nodes;
 	return (stacks);
 }
 
-void	get_cheapest_a_des(t_stacks *stacks)
+t_rated_node	get_best_a_des(t_stacks *stacks)
+{
+	t_rated_node	best;
+	t_rated_node	cur;
+	int				loc;
+
+	loc = 0;
+	cur.nd.node = stacks->a_head;
+	cur.nd.loc = 0;
+	rate_node_a_des(stacks, &cur);	
+	best = cur;
+	while (++loc < stacks->a_size)
+	{
+		
+		cur = rate_node_a_des(stacks, (t_loc_node){cur.nd.node->next, loc});
+		if (cur.rate < best.rate)
+			best = cur;
+	}
+	return (best);
+}	
+
+void	get_movs(t_stacks *stacks, t_loc_node node)
 {
 
 }
 
-void	get_movs(t_stacks *stacks, t_located_node node)
+void	rate_node_a_des(t_stacks *stacks, t_rated_node *rnd)
 {
-	int max = stacks
-}
+	t_rated_node res;
 
-t_paired_nodes get_pair(t_stacks *stacks, t_located_node *lnode)
-{
-	t_paired_nodes pair;
-	
-	*(pair.node) = *lnode;
-	*(pair.target) = get_target_a_des(stacks, lnode->node->value);
-}
-
-t_located_node	get_target_a_des(t_stacks *stacks, int value)
-{
-	t_located_node	target;
-	t_node			*current;
-	int				location;
-
-	if (value < stacks->extreme->value)
-		return (localize_node(stacks->b_head, stacks->extreme->next));
+	if (nd.node->value < stacks->extreme.node->value)
+		
 	current = stacks->b_head;
-	target.location = 0;
+	target.loc = 0;
 	while (value < current->value)
 	{
 		if (value > current->next->value)
 			break;
 		current = current->next;
-		target.location++;
+		target.loc++;
 	}
 	while (value > current->value)
 	{
 		if (value < current->prev->value)
 			break;
 		current = current->prev;
-		target.location--;
+		target.loc--;
 	}
 	target.node = current;
-	target.location %= (stacks -> capacity - stacks->a_size);
+	target.loc %= (stacks -> capacity - stacks->a_size);
 	return(target);
 }
 
-t_located_node localize_node(t_node *head, t_node *node)
+t_loc_node localize_node(t_node *head, t_node *node)
 {
-	t_located_node	ret;
+	t_loc_node	res;
 	t_node			*current;
 	int				depth;
 
-	ret.node = node;
+	res.node = node;
 	current = head;
 	depth = 0;
 	while (current != node)
@@ -100,7 +106,7 @@ t_located_node localize_node(t_node *head, t_node *node)
 		current = current->next;
 		depth++;
 	}
-	ret.location = depth;
+	res.loc = depth;
 	return (ret);	
 }
 
