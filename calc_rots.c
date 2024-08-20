@@ -6,14 +6,17 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 18:54:12 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/17 18:54:37 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/20 19:55:37 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
+static void	case_pp(t_rated_node *rnd);
+static void	case_nn(t_rated_node *rnd);
+
 void	calc_rots(t_rated_node *rnd)
-{	
+{
 	if (rnd->src_nd.loc * rnd->dst_nd.loc <= 0)
 	{
 		rnd->rate = 0;
@@ -25,7 +28,7 @@ void	calc_rots(t_rated_node *rnd)
 		case_nn(rnd);
 }
 
-void	case_pp(t_rated_node *rnd)
+static void	case_pp(t_rated_node *rnd)
 {
 	if (rnd->src_nd.loc >= rnd->dst_nd.loc)
 	{
@@ -34,12 +37,12 @@ void	case_pp(t_rated_node *rnd)
 	}
 	else
 	{
-		rots.ld = 2;
+		rnd->rate = 2;
 		rnd->dst_nd.loc -= rnd->src_nd.loc;
 	}
 }
 
-void	case_nn(t_rated_node *rnd)
+static void	case_nn(t_rated_node *rnd)
 {
 	if (rnd->src_nd.loc <= rnd->dst_nd.loc)
 	{

@@ -6,15 +6,15 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:35:52 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/14 11:47:24 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/20 16:34:02 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int abs(int a)
+int	abs(int a)
 {
-    if (a < 0)
-        return (-a);
-    return (a);
+	if (a < 0)
+		return (-a);
+	return (a);
 }

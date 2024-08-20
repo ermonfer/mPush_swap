@@ -1,6 +1,8 @@
 {
   "files.associations": {
-    "ft_printf.h": "c"
+    "ft_printf.h": "c",
+    "libft.h": "c",
+    "stdbool.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

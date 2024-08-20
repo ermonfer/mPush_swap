@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:57:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/18 18:04:22 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/20 21:23:46 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_stacks	*init_stacks(int arr[], int nbs)
 	stacks->a.head = stacks->nodes;
 	return (stacks);
 }
-
 
 // void print_circular_list(t_node *node, int size)
 // {
