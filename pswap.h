@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:26:00 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/20 21:17:42 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/21 20:06:16 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,15 @@ typedef struct s_stacks
 typedef struct s_ord
 {
 	bool		(*gt)(int a, int b);
-	t_loc_node	(*get_top)(t_stack * stack);
+	t_loc_node	top;
 }	t_ord;
 
 bool		greater(int a, int b);
 bool		lower(int a, int b);
-t_loc_node	get_max(t_stack *stack);
-t_loc_node	get_min(t_stack *stack);
-void		set_peak(t_stack *stack);
+void		set_top(t_stack *stack, t_ord *ord);
 
 t_stacks	*init_stacks(int arr[], int nbs);
+void		print_stacks(t_stacks *stacks);
 
 void		rot(t_stack *stack, bool print);
 void		rrot(t_stacks *stacks, bool print);
@@ -78,6 +77,10 @@ void		sswap(t_stacks *stacks, bool print);
 void		print_rots(t_rated_node *rots, t_stack *src);
 void		calc_rots(t_rated_node *rnd);
 
-void		push_stack(t_stack *src, t_stack *dst, const t_ord *ord, int limit);
+void		push_stack(t_stack *src, t_stack *dst, t_ord *ord, int limit);
+void		get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd);
+void		get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd);
+void		get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord);
+void		get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd);
 
 void		turk(t_stacks *s);

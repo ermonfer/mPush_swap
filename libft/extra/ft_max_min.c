@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:30:50 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/20 20:56:24 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:07:17 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	ft_maxint(int a, int b)
 {
-	if (a < b)
+	if (b > a)
 		return (b);
 	return (a);
 }
 
 int	ft_minint(int a, int b)
 {
-	if (a > b)
+	if (b < a)
 		return (b);
 	return (a);
 }

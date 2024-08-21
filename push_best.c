@@ -6,47 +6,44 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 18:03:28 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/20 21:15:57 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/21 20:15:27 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-static void	push_best(t_stack *src, t_stack *dst, const t_ord *ord);
-static void	get_rots(t_stack *src, t_stack *dst, const t_ord *ord, t_rated_node *rnd);
-static void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, const t_ord *ord);
-static void	get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd);
+void	get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd);
+void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord);
+void	get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd);
+bool	out_of_bounds(int value, t_ord *ord);
 
-void	push_stack(t_stack *src, t_stack *dst, const t_ord *ord, int limit)
-{
-	set_peak(dst);
-	while (src->size > limit)
-		push_best(src, dst, ord);
-}
-
-static void	push_best(t_stack *src, t_stack *dst, const t_ord *ord)
+void	push_stack(t_stack *src, t_stack *dst, t_ord *ord, int limit)
 {
 	t_rated_node	rots;
 
-	get_rots(src, dst, ord, &rots);
-	src->head = rots.src_nd.node;
-	dst->head = rots.dst_nd.node;
-	dst->peak.loc = (dst->peak.loc - rots.dst_nd.loc) % dst->size;
-	print_rots(&rots, src);
-	push(src, dst, true);
-	if (dst->head->value < dst->peak.node->value)
-		dst->peak = (t_loc_node){dst->head, 0};
-	else
-		dst->peak.loc = (dst->peak.loc + 1) % dst->size;
+	set_top(dst, ord);
+	while (src->size > limit)
+	{
+		get_rots(src, dst, ord, &rots); // <=== NO funciona. Tiene diversas fases.
+		src->head = rots.src_nd.node;
+		dst->head = rots.dst_nd.node;
+		ord->top.loc = (ord->top.loc - rots.dst_nd.loc) % dst->size;
+		print_rots(&rots, src);
+		push(src, dst, true);
+		if (dst->head->value < ord->top.node->value)
+			ord->top = (t_loc_node){dst->head, 0};
+		else
+			ord->top.loc = (ord->top.loc + 1) % dst->size;
+	}
 }
 
-static void	get_rots(t_stack *src, t_stack *dst, const t_ord *ord, t_rated_node *rnd)
+void	get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd)
 {
 	t_rated_node	cur;
 
 	cur.src_nd.node = src->head;
 	cur.src_nd.loc = 0;
-	get_tg(src, dst, &cur, ord);
+	get_tg(src, dst, &cur, ord); //<======== llama a get_cost al final. Luego consigue el costo
 	*rnd = cur;
 	while (++cur.src_nd.loc < src->size)
 	{
@@ -55,15 +52,15 @@ static void	get_rots(t_stack *src, t_stack *dst, const t_ord *ord, t_rated_node 
 		if (cur.rate < rnd->rate)
 			*rnd = cur;
 	}
-	calc_rots(rnd);
+	calc_rots(rnd); //<============
 }
 
-static void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, const t_ord *ord)
+void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord)
 {
-	if (ord->gt(rnd->src_nd.node->value, ord->get_top(dst).node->value))
+	if (out_of_bounds(rnd->src_nd.node->value, ord))
 	{
-		rnd->dst_nd.node = ord->get_top(dst).node->next;
-		rnd->dst_nd.loc = (ord->get_top(dst).loc + 1) % (dst->size);
+		rnd->dst_nd.node = ord->top.node->next;
+		rnd->dst_nd.loc = (ord->top.loc + 1) % (dst->size);
 		return ;
 	}
 	rnd->dst_nd.node = dst->head;
@@ -81,10 +78,10 @@ static void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, const t_ord *o
 		rnd->dst_nd.loc--;
 	}
 	rnd->dst_nd.loc %= dst->size;
-	get_cost(src, dst, rnd);
+	// get_cost(src, dst, rnd);
 }
 
-static void	get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd)
+void	get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd)
 {
 	int	src_nd_loc;
 	int	dst_nd_loc;
@@ -110,4 +107,13 @@ static void	get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd)
 		rnd->src_nd.loc = src_nd_loc - src->size;
 		rnd->dst_nd.loc = dst_nd_loc;
 	}
+}
+
+bool	out_of_bounds(int value, t_ord *ord)
+{
+	if (ord->gt(value, ord->top.node->value))
+		return (true);
+	if (ord->gt(ord->top.node->next->value, value))
+		return (true);
+	return (false);
 }
