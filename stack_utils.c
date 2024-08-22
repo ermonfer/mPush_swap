@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:57:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/21 15:24:41 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:25:18 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,26 @@ t_stacks	*init_stacks(int arr[], int nbs)
 	return (stacks);
 }
 
-static void print_circular_list(t_node *node, int size)
+void print_circular_list(t_stack *stack)
 {
-	if (size == 0)
+	printf("stack %c:\n",  stack->name);
+	if (stack->size == 0)
 	{
 		printf("vacio\n");
 		return;
 	}
+	int	size = stack->size;
 	while (size--)
 	{
-		printf("%d\n", node->value);
-		node = node->next;
+		printf("%d\n", stack->head->value);
+		stack->head = stack->head->next;
 	}
 }
 
 void print_stacks(t_stacks *stacks)
 {
-	printf("stack a:\n");
-	print_circular_list(stacks->a.head, stacks->a.size);
-	printf("stack b:\n");
-	print_circular_list(stacks->b.head, stacks->b.size);
+	print_circular_list(&stacks->a);
+	print_circular_list(&stacks->b);
 }
 
 // int main(void)

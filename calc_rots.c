@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 18:54:12 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/20 19:55:37 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:18:50 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,9 @@ static void	case_nn(t_rated_node *rnd);
 
 void	calc_rots(t_rated_node *rnd)
 {
-	if (rnd->src_nd.loc * rnd->dst_nd.loc <= 0)
-	{
+	if (rnd->src_nd.loc * rnd->dst_nd.loc < 0)
 		rnd->rate = 0;
-		return ;
-	}
-	else if (rnd->src_nd.loc > 0)
+	else if (rnd->src_nd.loc + rnd->dst_nd.loc > 0)
 		case_pp(rnd);
 	else
 		case_nn(rnd);

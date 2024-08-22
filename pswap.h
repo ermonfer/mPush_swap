@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:26:00 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/21 20:06:16 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:26:23 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void		set_top(t_stack *stack, t_ord *ord);
 
 t_stacks	*init_stacks(int arr[], int nbs);
 void		print_stacks(t_stacks *stacks);
+void		print_circular_list(t_stack *stack);
 
 void		rot(t_stack *stack, bool print);
 void		rrot(t_stacks *stacks, bool print);
