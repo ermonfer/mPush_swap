@@ -6,11 +6,13 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:57:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/22 18:25:18 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/22 22:30:04 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
+
+void	head_to_bottom(t_stack *stack, t_ord *ord);
 
 t_stacks	*init_stacks(int arr[], int nbs)
 {
@@ -39,7 +41,26 @@ t_stacks	*init_stacks(int arr[], int nbs)
 	return (stacks);
 }
 
-void print_circular_list(t_stack *stack)
+void	head_to_bottom(t_stack *stack, t_ord *ord)
+{
+	int	rots;
+
+	set_top(stack, ord);
+	rots = ft_maxint((ord->top.loc + 1) % stack->size, (ord->top.loc + 1) % stack->size - stack->size);
+	if (rots > 0)
+	{
+		while (rots--)
+			write(1, (char []){'r', stack->name, '\n'}, 3);
+	}
+	if (rots < 0)
+	{
+		while (rots++)
+			write(1, (char []){'r', 'r', stack->name, '\n'}, 4);
+	}
+	stack->head = ord->top.node->next;
+}
+
+void	print_circular_list(t_stack *stack)
 {
 	printf("stack %c:\n",  stack->name);
 	if (stack->size == 0)

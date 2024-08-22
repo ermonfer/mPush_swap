@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 18:05:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/22 18:16:10 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/22 22:23:11 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	turk(t_stacks *s)
 	push(&s->a, &s->b, true);
 	push(&s->a, &s->b, true);
 	push_stack(&s->a, &s->b, &des, 3);
-	return ;
 	sort_3(&s->a);
-	push_stack(&s->b, &s->b, &as, 0);
+	push_stack(&s->b, &s->a, &as, 0);
+	head_to_bottom(&s->a, &as);
 }
 
 int main(void)
