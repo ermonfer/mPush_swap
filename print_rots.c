@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 14:22:17 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/20 20:02:14 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/23 12:53:07 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	print_case_nn(t_rated_node *rots, char src);
 
 void	print_rots(t_rated_node *rots, t_stack *src)
 {
+	calc_rots(rots);
 	if (rots->rate == 0)
 		print_case_0(rots, src->name);
 	else if (rots->rate > 0)
@@ -87,8 +88,8 @@ static void	print_case_nn(t_rated_node *rots, char src)
 	char	*rr_dst;
 
 	dst = ((src == 'a') * 'b') + ((src != 'a') * 'a');
-	rr_src = (char []){'r', 'r', src, '\0'};
-	rr_dst = (char []){'r', 'r', dst, '\0'};
+	rr_src = (char []){'r', 'r', src, '\n'};
+	rr_dst = (char []){'r', 'r', dst, '\n'};
 	if (rots->rate == -1)
 	{
 		while (rots->dst_nd.loc++)

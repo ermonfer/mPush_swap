@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:26:00 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/22 22:23:54 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:35:41 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,6 @@ void		get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd);
 void		get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord);
 void		get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd);
 
+void		sort_2(t_stack *stack);
+void		sort_3(t_stack *stack);
 void		turk(t_stacks *s);

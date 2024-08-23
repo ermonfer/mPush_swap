@@ -6,17 +6,17 @@ CC := cc
 CFLAGS := -Werror -Wextra -Wall -I$(INC_DIR)
 AR = ar -rcs
 
-SRC_EXTRA := ft_insertionsort.c ft_quicksort.c ft_max_min.c ft_abs.c
+SRC_EXTRA := ft_insertionsort.c ft_quicksort.c ft_max_min.c ft_abs.c ft_mod.c
 DIR_EXTRA := extra/
 SRC_EXTRA := $(addprefix $(DIR_EXTRA), $(SRC_EXTRA))
 OBJ_EXTRA := $(SRC_EXTRA:.c=.o)
 
-SRC_LIBFT := ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
-	ft_isdigit.c ft_isprint.c ft_isspace.c ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c\
-	ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c\
-	ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c\
-	ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c\
-	ft_tolower.c ft_toupper.c
+SRC_LIBFT := ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalnum.c ft_isalpha.c\
+	ft_isascii.c ft_isdigit.c ft_isprint.c ft_isspace.c ft_itoa.c ft_memchr.c ft_memcmp.c\
+	ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
+	ft_putstr_fd.c ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c\
+	ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c\
+	ft_substr.c ft_tolower.c ft_toupper.c
 DIR_LIBFT := subject/mandatory/
 SRC_LIBFT := $(addprefix $(DIR_LIBFT), $(SRC_LIBFT))
 OBJ_LIBFT := $(SRC_LIBFT:.c=.o)

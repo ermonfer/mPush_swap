@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 18:03:28 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/22 21:51:49 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/23 17:46:48 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,12 @@ void	push_stack(t_stack *src, t_stack *dst, t_ord *ord, int limit)
 	t_rated_node	rots;
 
 	set_top(dst, ord);
-	printf("%d\n", ord->top.loc);//====================
 	while (src->size > limit)
 	{
-		printf("\n////////\n");
-		print_circular_list(src);
-		print_circular_list(dst);
-		printf("=======\n");
 		get_rots(src, dst, ord, &rots);
-		printf("%d %d %d\n", rots.src_nd.loc, rots.dst_nd.loc, rots.rate);//=============================
 		src->head = rots.src_nd.node;
 		dst->head = rots.dst_nd.node;
-		ord->top.loc = ((ord->top.loc - rots.dst_nd.loc) % dst->size + dst->size) % dst->size;
-		printf("%d   ******\n", ord->top.loc);//====================
+		ord->top.loc = ft_mod(ord->top.loc - rots.dst_nd.loc, dst->size);
 		print_rots(&rots, src);
 		push(src, dst, true);
 		if (ord->gt(dst->head->value, ord->top.node->value))
@@ -47,22 +40,22 @@ void	push_stack(t_stack *src, t_stack *dst, t_ord *ord, int limit)
 void	get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd)
 {
 	t_rated_node	cur;
-	int				pos;
 
 	cur.src_nd.node = src->head;
 	cur.src_nd.loc = 0;
 	get_tg(src, dst, &cur, ord);
+	if (cur.src_nd.loc < 0)
+		cur.src_nd.loc += src->size;
 	*rnd = cur;
-	pos = 0;
-	while (++pos < src->size)
+	while (++cur.src_nd.loc < src->size)
 	{
 		cur.src_nd.node = cur.src_nd.node->next;
-		cur.src_nd.loc = pos;
 		get_tg(src, dst, &cur, ord);
 		if (cur.rate < rnd->rate)
 			*rnd = cur;
+		if (cur.src_nd.loc < 0)
+			cur.src_nd.loc += src->size;
 	}
-	calc_rots(rnd);
 }
 
 void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord)
@@ -74,22 +67,22 @@ void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord)
 	}
 	else
 	{
-		rnd->dst_nd.node = dst->head;
-		rnd->dst_nd.loc = 0;
-		while (ord->gt(rnd->src_nd.node->value, rnd->dst_nd.node->value))
-		{
-			rnd->dst_nd.node = rnd->dst_nd.node->next;
-			rnd->dst_nd.loc++;
-		}
-		while (ord->gt(rnd->dst_nd.node->value, rnd->src_nd.node->value))
-		{
-			if (ord->gt(rnd->src_nd.node->value, rnd->dst_nd.node->prev->value))
-				break ;
-			rnd->dst_nd.node = rnd->dst_nd.node->prev;
-			rnd->dst_nd.loc--;
-		}
-		rnd->dst_nd.loc = ((rnd->dst_nd.loc % dst->size) + dst->size) % dst->size;
-		}
+	rnd->dst_nd.node = dst->head;
+	rnd->dst_nd.loc = 0;
+	while (ord->gt(rnd->src_nd.node->value, rnd->dst_nd.node->value))
+	{
+		rnd->dst_nd.node = rnd->dst_nd.node->next;
+		rnd->dst_nd.loc++;
+	}
+	while (ord->gt(rnd->dst_nd.node->value, rnd->src_nd.node->value))
+	{
+		if (ord->gt(rnd->src_nd.node->value, rnd->dst_nd.node->prev->value))
+			break ;
+		rnd->dst_nd.node = rnd->dst_nd.node->prev;
+		rnd->dst_nd.loc--;
+	}
+	rnd->dst_nd.loc = ((rnd->dst_nd.loc % dst->size) + dst->size) % dst->size;
+	}
 	get_cost(src, dst, rnd);
 }
 

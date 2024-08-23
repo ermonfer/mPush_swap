@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:57:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/22 22:30:04 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/23 19:48:48 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ void	head_to_bottom(t_stack *stack, t_ord *ord)
 {
 	int	rots;
 
-	set_top(stack, ord);
-	rots = ft_maxint((ord->top.loc + 1) % stack->size, (ord->top.loc + 1) % stack->size - stack->size);
-	if (rots > 0)
+	rots = (ord->top.loc + 1) % stack->size;
+	if (rots < stack->size - rots)
 	{
 		while (rots--)
 			write(1, (char []){'r', stack->name, '\n'}, 3);
 	}
-	if (rots < 0)
+	else
 	{
-		while (rots++)
+		rots = stack->size - rots;
+		while (rots--)
 			write(1, (char []){'r', 'r', stack->name, '\n'}, 4);
 	}
 	stack->head = ord->top.node->next;
@@ -62,13 +62,15 @@ void	head_to_bottom(t_stack *stack, t_ord *ord)
 
 void	print_circular_list(t_stack *stack)
 {
-	printf("stack %c:\n",  stack->name);
+	int	size;
+
+	printf("stack %c:\n", stack->name);
 	if (stack->size == 0)
 	{
 		printf("vacio\n");
-		return;
+		return ;
 	}
-	int	size = stack->size;
+	size = stack->size;
 	while (size--)
 	{
 		printf("%d\n", stack->head->value);
@@ -76,7 +78,7 @@ void	print_circular_list(t_stack *stack)
 	}
 }
 
-void print_stacks(t_stacks *stacks)
+void	print_stacks(t_stacks *stacks)
 {
 	print_circular_list(&stacks->a);
 	print_circular_list(&stacks->b);
