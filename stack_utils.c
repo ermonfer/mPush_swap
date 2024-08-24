@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:57:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/23 19:48:48 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/24 15:06:42 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,21 +83,3 @@ void	print_stacks(t_stacks *stacks)
 	print_circular_list(&stacks->a);
 	print_circular_list(&stacks->b);
 }
-
-// int main(void)
-// {
-// 	int array[] = {10, 212, 43, -9};
-// 	t_stacks *stacks = init_stacks(array, 4);
-// 	printf("size de a: %d\nsize de b: %d\n", stacks->a.size, stacks->b.size);
-// 	print_stacks(stacks);
-// 	push(&stacks->a, &stacks->b, true);
-// 	push(&stacks->a, &stacks->b, true);
-// 	printf("size de a: %d\nsize de b: %d\n", stacks->a.size, stacks->b.size);
-// 	print_stacks(stacks);
-// 	sswap(stacks, true);
-// 	print_stacks(stacks);
-// 	push(&stacks->b, &stacks->a, true);
-// 	print_stacks(stacks);
-// 	free(stacks);
-// 	return 0;
-// }

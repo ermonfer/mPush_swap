@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 15:17:57 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/02 20:26:57 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/08/24 18:37:44 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
+# include <errno.h>
 
 int		ft_isupper(int c);
 int		ft_islower(int c);
