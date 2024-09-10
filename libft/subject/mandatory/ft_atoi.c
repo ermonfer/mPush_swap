@@ -6,11 +6,13 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 13:09:34 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/24 19:06:16 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/10 20:14:31 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static long overflow(int sign);
 
 int	ft_atoi(const char *str)
 {
