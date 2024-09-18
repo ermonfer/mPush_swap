@@ -6,22 +6,38 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 15:08:47 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/16 21:09:02 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:40:37 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-int	*to_arr(int argc, char *argv[])
+int	*normalize_inputs(int argc, const char *argv[])
 {
-	int	i;
+	
+}
 
-	i = 1;
-	while (i < argc)
+
+static int	tokens_count(int argc, const char *argv[])
+{
+	int			counter;
+	const char	*s;
+
+	counter = 0;
+	while(argc-- > 0)
 	{
-		if (ft_strchr(argv[i], ' ') == NULL)
+		s = argv[argc];
+		while (*s != '\0')
 		{
-			
+			while (*s == ' ')
+				s++;
+			if (*s != '\0')
+			{
+				counter++;
+				while (*s != ' ' && *s != '\0')
+					s++;
+			}
 		}
 	}
+	return (counter);
 }
