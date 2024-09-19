@@ -6,13 +6,13 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 13:09:34 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/18 16:20:56 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/19 09:38:55 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int overflow(int sign);
+static int overflow(int *out_of_range, int sign);
 
 int	ft_atoi(const char *str, int *out_of_range)
 {
@@ -35,18 +35,16 @@ int	ft_atoi(const char *str, int *out_of_range)
 	{
 		digit = *str++ - '0';
 		if (result > cutoff || (result == cutoff && digit == cutlim))
-		*out_of_range = 1;
-		return(INT_MAX * (sign == 1) + INT_MIN * (sign == -1));
+			return(overflow(out_of_range, sign));
 	}
 		result = result * 10 + (*str++ - '0');
 	return (result * sign);
 }
 
-static long	overflow(int *out_of_range)
+static int	overflow(int *out_of_range, int sign)
 {
 	*out_of_range = 1; 
     if (sign == -1)
-		return (INT_MAX);
-	else
 		return (INT_MIN);
+	return (INT_MAX);
 }
