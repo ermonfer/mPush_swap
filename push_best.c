@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 18:03:28 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/23 17:46:48 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/23 22:00:45 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,21 @@ void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord)
 	}
 	else
 	{
-	rnd->dst_nd.node = dst->head;
-	rnd->dst_nd.loc = 0;
-	while (ord->gt(rnd->src_nd.node->value, rnd->dst_nd.node->value))
-	{
-		rnd->dst_nd.node = rnd->dst_nd.node->next;
-		rnd->dst_nd.loc++;
-	}
-	while (ord->gt(rnd->dst_nd.node->value, rnd->src_nd.node->value))
-	{
-		if (ord->gt(rnd->src_nd.node->value, rnd->dst_nd.node->prev->value))
-			break ;
-		rnd->dst_nd.node = rnd->dst_nd.node->prev;
-		rnd->dst_nd.loc--;
-	}
-	rnd->dst_nd.loc = ((rnd->dst_nd.loc % dst->size) + dst->size) % dst->size;
+		rnd->dst_nd.node = dst->head;
+		rnd->dst_nd.loc = 0;
+		while (ord->gt(rnd->src_nd.node->value, rnd->dst_nd.node->value))
+		{
+			rnd->dst_nd.node = rnd->dst_nd.node->next;
+			rnd->dst_nd.loc++;
+		}
+		while (ord->gt(rnd->dst_nd.node->value, rnd->src_nd.node->value))
+		{
+			if (ord->gt(rnd->src_nd.node->value, rnd->dst_nd.node->prev->value))
+				break ;
+			rnd->dst_nd.node = rnd->dst_nd.node->prev;
+			rnd->dst_nd.loc--;
+		}
+		rnd->dst_nd.loc = ft_mod(rnd->dst_nd.loc, dst->size);
 	}
 	get_cost(src, dst, rnd);
 }

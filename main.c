@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 17:50:02 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/23 18:40:29 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:54:43 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int	main(int argc, char *argv[])
 {
 	int			*arr;
-	int 		i;
+	int			i;
 	t_stacks	*s;
-	
+
 	if (argc < 2)
 		return (0);
 	arr = malloc((argc - 1) * sizeof (int));
