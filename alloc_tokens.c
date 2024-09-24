@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   alloc_tokens.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/24 15:08:47 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/23 21:46:34 by fmontero         ###   ########.fr       */
+/*   Created: 2024/09/24 19:09:11 by fmontero          #+#    #+#             */
+/*   Updated: 2024/09/24 21:17:39 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
+#include <stdio.h>
+#include <stdint.h>
 
-static int		count_tokens(char *str);
+static int		count_tokens(const char *str);
 static int		total_tokens(int argc, const char *argv[]);
 static int		check_format(const char *token);
-static void		free_or_continue(void *condition, int *tokens, char **split);
+static void		check(uintptr_t condition, int *tokens, char **split);
 
-int	*alloc_tokens(int argc, const char *argv[], int *out_of_range)
+int	*alloc_tokens(int argc, const char *argv[], int *out_of_range, int *size)
 {
 	int		*tokens;
 	char	**split;
@@ -25,35 +27,40 @@ int	*alloc_tokens(int argc, const char *argv[], int *out_of_range)
 	int		j;
 	int		k;
 
-	tokens = malloc(sizeof(int) * total_tokens(argc, argv));
-	free_or_continue(tokens, NULL, NULL);
+	*size = total_tokens(argc, argv);
+	tokens = malloc(sizeof(int) * (*size));
+	check((uintptr_t)tokens, NULL, NULL);
 	i = 1;
 	j = 0;
 	while (i++ < argc)
 	{
 		split = ft_split(argv[i], ' ');
-		free_or_continue((void *)split, tokens, NULL);
+		check((uintptr_t)split, tokens, NULL);
 		k = 0;
 		while (split[k] != NULL)
 		{
-			free_or_continue((void *)check_format(split[k++]), tokens, split);
+			check((uintptr_t)check_format(split[k++]), tokens, split);
 			tokens[j++] = ft_atoi_signal(*split, out_of_range);
-			free_or_continue((void *)out_of_range, tokens, split);
+			check((uintptr_t)out_of_range, tokens, split);
 		}
 		free(split);
 	}
 	return (tokens);
 }
 
-static void	free_or_continue(void *condition, int *tokens, char **split)
+static void	check(uintptr_t condition, int *tokens, char **split)
 {
 	int	i;
 
 	if (condition != 0)
 		return ;
-	while (split[i] != NULL)
-		free(split[i]);
+	i = 0;
+	if (split != NULL)
+	{
+		while (split[i] != NULL)
+			free(split[i++]);
 	free(split);
+	}
 	free(tokens);
 }
 
@@ -71,7 +78,7 @@ static int	check_format(const char *token)
 	return (0);
 }
 
-static int	count_tokens(char *str)
+static int	count_tokens(const char *str)
 {
 	int			counter;
 
@@ -93,10 +100,27 @@ static int	count_tokens(char *str)
 static int	total_tokens(int argc, const char *argv[])
 {
 	int			counter;
-	const char	*s;
 
 	counter = 0;
 	while (argc-- > 0)
-		counter += tokens_count(argv[argc]);
+		counter += count_tokens((const char *)argv[argc]);
 	return (counter);
+}
+
+int	main(int argc, char *argv[])
+{
+	int	*arr;
+	int out_of_range;
+	int size;
+	int	i;
+
+	arr = alloc_tokens(argc, (const char **)argv, &out_of_range, &size);
+	i = 0;
+	while (i < size)
+	{
+		printf("%d ", arr[i]);
+		i++;
+	}
+	free(arr);
+	return (0);
 }
