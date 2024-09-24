@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:09:11 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/24 21:17:39 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/24 21:28:10 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ int	*alloc_tokens(int argc, const char *argv[], int *out_of_range, int *size)
 	check((uintptr_t)tokens, NULL, NULL);
 	i = 1;
 	j = 0;
-	while (i++ < argc)
+	while (i < argc)
 	{
-		split = ft_split(argv[i], ' ');
+		split = ft_split(argv[i++], ' ');
 		check((uintptr_t)split, tokens, NULL);
 		k = 0;
 		while (split[k] != NULL)
 		{
 			check((uintptr_t)check_format(split[k++]), tokens, split);
 			tokens[j++] = ft_atoi_signal(*split, out_of_range);
-			check((uintptr_t)out_of_range, tokens, split);
+			check((uintptr_t)out_of_range, tokens, split); // Creo que esta mal esto tambien.
 		}
 		free(split);
 	}
