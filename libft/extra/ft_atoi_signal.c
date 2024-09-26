@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:14:14 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/25 11:56:09 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:54:06 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	ft_atoi_signal(const char *str, int *out_of_range)
 {
 	int	sign;
 	int	result;
-	int cutoff;
-	int cutlim;
-	int digit;
+	int	cutoff;
+	int	cutlim;
+	int	digit;
 
 	*out_of_range = 0;
 	while (*str == ' ')
@@ -35,7 +35,7 @@ int	ft_atoi_signal(const char *str, int *out_of_range)
 	{
 		digit = *str++ - '0';
 		if ((result > cutoff) || (result == cutoff && digit > cutlim))
-			return(overflow(out_of_range, sign));
+			return (overflow(out_of_range, sign));
 		result = result * 10 + digit;
 	}
 	return (result * sign);

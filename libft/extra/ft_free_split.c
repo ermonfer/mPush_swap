@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:33:56 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/25 11:44:51 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/26 19:16:07 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_free_split(char **split)
 
 	if (split == NULL)
 		return ;
+	i = 0;
 	while (split[i] != NULL)
 		free(split[i++]);
 	free(split);

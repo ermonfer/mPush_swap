@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:09:11 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/25 13:41:13 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/26 20:23:28 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 #include <stdio.h>
 #include <stdint.h>
 
-static int		*alloc_tokens(int argc, const char *argv[], int *out_of_range, int *size);
-static int		total_tokens(int argc, const char *argv[]);
-static int		check_format(const char *token);
-static void		check(uintptr_t condition, int *tokens, char **split);
+static int	*alloc_tokens(int argc, const char *argv[], int *out, int *size);
+static int	total_tokens(int argc, const char *argv[]);
+static int	check_format(const char *token);
+static void	check(uintptr_t condition, int *tokens, char **split);
 
 int	*parse(int argc, const char *argv[], int *out_of_range, int *size)
 {
-	int *tokens;
-	int *copy;
+	int	*tokens;
+	int	*copy;
 	int	i;
 
 	tokens = alloc_tokens(argc, argv, out_of_range, size);
@@ -35,13 +35,14 @@ int	*parse(int argc, const char *argv[], int *out_of_range, int *size)
 		if (copy[i] >= copy[i + 1])
 		{
 			free(copy);
-			check(0, tokens, NULL);	
+			check(0, tokens, NULL);
 		}
+		i++;
 	}
-	return (tokens);	
+	return (tokens);
 }
 
-static int	*alloc_tokens(int argc, const char *argv[], int *out_of_range, int *size)
+static int	*alloc_tokens(int argc, const char *argv[], int *out, int *size)
 {
 	int		*tokens;
 	char	**split;
@@ -62,8 +63,8 @@ static int	*alloc_tokens(int argc, const char *argv[], int *out_of_range, int *s
 		while (split[k] != NULL)
 		{
 			check((uintptr_t)check_format(split[k]), tokens, split);
-			tokens[j++] = ft_atoi_signal(split[k++], out_of_range);
-			check((uintptr_t)out_of_range, tokens, split);
+			tokens[j++] = ft_atoi_signal(split[k++], out);
+			check((uintptr_t)out, tokens, split);
 		}
 		ft_free_split(split);
 	}
@@ -72,14 +73,12 @@ static int	*alloc_tokens(int argc, const char *argv[], int *out_of_range, int *s
 
 static void	check(uintptr_t condition, int *tokens, char **split)
 {
-	int	i;
-
 	if (condition != 0)
 		return ;
 	ft_free_split(split);
 	free(tokens);
 	write(1, "Error\n", 6);
-	error(1);
+	exit(1);
 }
 
 static int	check_format(const char *token)
@@ -103,7 +102,7 @@ static int	total_tokens(int argc, const char *argv[])
 	const char	*str;
 
 	total = 0;
-	while (argc-- > 1)
+	while (--argc > 0)
 	{
 		str = (const char *)argv[argc];
 		counter = 0;
@@ -120,23 +119,20 @@ static int	total_tokens(int argc, const char *argv[])
 		}
 		total += counter;
 	}
-	return (counter);
+	return (total);
 }
 
-int	main(int argc, char *argv[])
-{
-	int	*arr;
-	int out_of_range;
-	int size;
-	int	i;
+// int	main(int argc, char *argv[])
+// {
+// 	int	*arr;
+// 	int out_of_range;
+// 	int size;
+// 	int	i;
 
-	arr = alloc_tokens(argc, (const char **)argv, &out_of_range, &size);
-	i = 0;
-	while (i < size)
-	{
-		printf("%d ", arr[i]);
-		i++;
-	}
-	free(arr);
-	return (0);
-}
+// 	arr = parse(argc, (const char **)argv, &out_of_range, &size);
+// 	i = 0;
+// 	while (i < size)
+// 		printf("%d ", arr[i++]);
+// 	free(arr);
+// 	return (0);
+// }

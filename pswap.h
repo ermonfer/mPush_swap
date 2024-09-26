@@ -6,17 +6,19 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:26:00 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/23 18:35:41 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/26 20:32:43 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include "./libft/include/libft.h"
-#include "./libft/include/extra.h"
+#ifndef PSWAP_H
+# define PSWAP_H
+# include <stddef.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdbool.h>
+# include "./libft/include/libft.h"
+# include "./libft/include/extra.h"
 
 typedef struct s_node
 {
@@ -88,3 +90,6 @@ void		get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd);
 void		sort_2(t_stack *stack);
 void		sort_3(t_stack *stack);
 void		turk(t_stacks *s);
+
+int			*parse(int argc, const char *argv[], int *out_of_range, int *size);
+#endif

@@ -6,28 +6,33 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 17:50:02 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/23 21:54:43 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/26 20:48:04 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
+void print_arr(int arr[], int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+		printf("%d ", arr[i++]);
+}
+
 int	main(int argc, char *argv[])
 {
 	int			*arr;
-	int			i;
 	t_stacks	*s;
+	int			size;
+	int			out_of_range;
 
 	if (argc < 2)
 		return (0);
-	arr = malloc((argc - 1) * sizeof (int));
-	i = 1;
-	while (i < argc)
-	{
-		arr[i - 1] = atoi(argv[i]);
-		i++;
-	}
-	s = init_stacks(arr, argc - 1);
+	arr = parse(argc, (const char **)argv, &out_of_range, &size);
+	print_arr(arr, size);
+	s = init_stacks(arr, size);
 	if (argc == 2)
 		sort_2(&s->a);
 	if (argc == 3)
