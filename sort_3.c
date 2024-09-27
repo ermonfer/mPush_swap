@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 18:05:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/27 20:59:19 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/27 21:17:02 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	turk(t_stacks *s)
 	t_ord	as;
 	t_ord	des;
 
-	if (stack_sorted(&s->a, &as, 0))
-		return ;
 	as = (t_ord){greater, {NULL, 0}};
 	des = (t_ord){lower, {NULL, 0}};
+	if (stack_sorted(&s->a, &as, 0))
+		return ;
 	if (s->a.size > 4)
 		push(&s->a, &s->b, true);
 	push(&s->a, &s->b, true);
