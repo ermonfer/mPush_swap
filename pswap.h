@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:26:00 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/26 20:32:43 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:40:20 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_stacks	*init_stacks(int arr[], int nbs);
 void		print_stacks(t_stacks *stacks);
 void		print_circular_list(t_stack *stack);
 void		head_to_bottom(t_stack *stack, t_ord *ord);
+bool		stack_sorted(t_stack *stack, t_ord *ord, bool relative);
 
 void		rot(t_stack *stack, bool print);
 void		rrot(t_stacks *stacks, bool print);
@@ -88,7 +89,7 @@ void		get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord);
 void		get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd);
 
 void		sort_2(t_stack *stack);
-void		sort_3(t_stack *stack);
+void		sort_3(t_stack *stack, t_ord *ord, bool relative);
 void		turk(t_stacks *s);
 
 int			*parse(int argc, const char *argv[], int *out_of_range, int *size);

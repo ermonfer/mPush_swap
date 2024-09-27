@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:57:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/24 15:06:42 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/27 19:54:29 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,25 @@ void	print_stacks(t_stacks *stacks)
 {
 	print_circular_list(&stacks->a);
 	print_circular_list(&stacks->b);
+}
+
+bool	stack_sorted(t_stack *stack, t_ord *ord, bool relative)
+{
+	t_node	*cur;
+	int i;
+	
+	if (relative)
+	{
+		set_top(stack, ord);
+		cur = ord->top.node->next;
+	}
+	else
+		cur = stack->head;
+	i = stack->size;
+	while (--i)
+	{
+		if (ord->gt(cur->value, cur->next->value))
+			return (0);
+	}
+	return (1);
 }

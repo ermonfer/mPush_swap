@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 17:50:02 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/26 20:48:04 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/27 20:54:36 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ void print_arr(int arr[], int size)
 		printf("%d ", arr[i++]);
 }
 
+void	frees(int *arr, t_stacks *s)
+{
+	free(arr);
+	free(s);
+}
+
 int	main(int argc, char *argv[])
 {
 	int			*arr;
@@ -31,15 +37,19 @@ int	main(int argc, char *argv[])
 	if (argc < 2)
 		return (0);
 	arr = parse(argc, (const char **)argv, &out_of_range, &size);
-	print_arr(arr, size);
 	s = init_stacks(arr, size);
-	if (argc == 2)
+	if (size == 2)
+	{
 		sort_2(&s->a);
-	if (argc == 3)
-		sort_3(&s->b);
+		return (0);
+	}
+	if (size == 3)
+	{
+		sort_3(&s->a, &(t_ord){greater, {NULL, 0}}, 0);
+		return (0);
+	}
 	else
 		turk(s);
-	free(arr);
-	free(s);
+	frees(arr, s);
 	return (0);
 }
