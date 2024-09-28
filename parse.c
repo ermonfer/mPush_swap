@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alloc_tokens.c                                     :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:09:11 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/26 20:23:28 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/28 17:52:59 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@ static int	total_tokens(int argc, const char *argv[]);
 static int	check_format(const char *token);
 static void	check(uintptr_t condition, int *tokens, char **split);
 
-int	*parse(int argc, const char *argv[], int *out_of_range, int *size)
+int	*parse(int argc, const char *argv[], int *size, int *median)
 {
 	int	*tokens;
 	int	*copy;
 	int	i;
+	int	out_of_range;
 
-	tokens = alloc_tokens(argc, argv, out_of_range, size);
+	tokens = alloc_tokens(argc, argv, &out_of_range, size);
 	copy = (int *)malloc(sizeof(int) * *size);
 	ft_memcpy(copy, tokens, sizeof(int) * *size);
 	ft_quicksort(copy, 0, *size - 1);
 	i = 0;
-	while (i + 1 < *size)
+	while (i < *size + 1)
 	{
 		if (copy[i] >= copy[i + 1])
 		{
@@ -39,6 +40,8 @@ int	*parse(int argc, const char *argv[], int *out_of_range, int *size)
 		}
 		i++;
 	}
+	*median = copy[(*size) / 2];
+	free(copy);
 	return (tokens);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:57:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/28 12:15:05 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/28 16:00:31 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void	print_stacks(t_stacks *stacks)
 bool	stack_sorted(t_stack *stack, t_ord *ord, bool relative)
 {
 	t_node	*cur;
-	int i;
-	
+	int		i;
+
 	if (relative)
 	{
 		set_top(stack, ord);

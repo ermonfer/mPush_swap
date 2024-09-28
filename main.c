@@ -6,13 +6,13 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 17:50:02 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/27 20:54:36 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/28 15:59:34 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void print_arr(int arr[], int size)
+void	print_arr(int arr[], int size)
 {
 	int	i;
 

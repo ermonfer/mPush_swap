@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 18:05:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/27 21:17:02 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/28 18:36:19 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,21 @@ void	sort_3(t_stack *stack, t_ord *ord, bool relative)
 		head_to_bottom(stack, ord);
 }
 
+void	push_halves(t_stacks *s, int median, int size)
+{
+	int	half;
+
+	while (s->a.size < size / 2)
+	{
+		if (s->a.head->value < median)
+			push(&s->a, &s->b, 1);
+		else
+			rot(&s->a, 1);
+	}
+	while (s->a.size > 0)
+		push(&s->a, &s->b, 1);
+}
+
 void	turk(t_stacks *s)
 {
 	t_ord	as;
@@ -36,8 +51,11 @@ void	turk(t_stacks *s)
 
 	as = (t_ord){greater, {NULL, 0}};
 	des = (t_ord){lower, {NULL, 0}};
-	if (stack_sorted(&s->a, &as, 0))
+	if (stack_sorted(&s->a, &as, 1))
+	{
+		head_to_bottom(&s->a, &as);
 		return ;
+	}
 	if (s->a.size > 4)
 		push(&s->a, &s->b, true);
 	push(&s->a, &s->b, true);
