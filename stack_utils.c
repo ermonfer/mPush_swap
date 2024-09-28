@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:57:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/27 19:54:29 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:15:05 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ bool	stack_sorted(t_stack *stack, t_ord *ord, bool relative)
 	{
 		if (ord->gt(cur->value, cur->next->value))
 			return (0);
+		cur = cur->next;
 	}
 	return (1);
 }
