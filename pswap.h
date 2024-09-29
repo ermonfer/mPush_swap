@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:26:00 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/29 16:54:38 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/29 19:18:20 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PSWAP_H
 # include <stddef.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include <stdbool.h>
 # include "./libft/include/libft.h"
 # include "./libft/include/extra.h"
@@ -91,7 +91,8 @@ void		get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd);
 void		sort_2(t_stack *stack);
 void		sort_3(t_stack *stack, t_ord *ord, bool relative);
 void		push_halves(t_stacks *s, int median, int size);
-void		turk(t_stacks *s);
+void		turk(t_stacks *s, int median, int size);
+
 
 int			*parse(int argc, const char *argv[], int *size, int *median);
 #endif
