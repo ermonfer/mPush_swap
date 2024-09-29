@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:09:11 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/28 17:52:59 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:56:51 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	*parse(int argc, const char *argv[], int *size, int *median)
 	ft_memcpy(copy, tokens, sizeof(int) * *size);
 	ft_quicksort(copy, 0, *size - 1);
 	i = 0;
-	while (i < *size + 1)
+	while (i < *size - 1)
 	{
 		if (copy[i] >= copy[i + 1])
 		{

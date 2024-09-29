@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 18:05:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/28 18:36:19 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:49:23 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	sort_3(t_stack *stack, t_ord *ord, bool relative)
 
 void	push_halves(t_stacks *s, int median, int size)
 {
-	int	half;
-
 	while (s->a.size < size / 2)
 	{
 		if (s->a.head->value < median)
