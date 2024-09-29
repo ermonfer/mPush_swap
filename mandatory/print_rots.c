@@ -6,12 +6,13 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 14:22:17 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/23 12:53:07 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/29 19:35:39 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
+void		print_rots(t_rated_node *rots, t_stack *src);
 static void	print_case_0(t_rated_node *rots, char src);
 static void	print_case_pp(t_rated_node *rots, char src);
 static void	print_case_nn(t_rated_node *rots, char src);

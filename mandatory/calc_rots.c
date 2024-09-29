@@ -6,12 +6,13 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 18:54:12 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/28 11:26:56 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/29 19:30:32 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
+void		calc_rots(t_rated_node *rnd);
 static void	case_pp(t_rated_node *rnd);
 static void	case_nn(t_rated_node *rnd);
 

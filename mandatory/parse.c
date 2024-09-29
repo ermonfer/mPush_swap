@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:09:11 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/29 15:56:51 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/29 19:34:58 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
+int			*parse(int argc, const char *argv[], int *size, int *median);
 static int	*alloc_tokens(int argc, const char *argv[], int *out, int *size);
 static int	total_tokens(int argc, const char *argv[]);
 static int	check_format(const char *token);
@@ -124,18 +125,3 @@ static int	total_tokens(int argc, const char *argv[])
 	}
 	return (total);
 }
-
-// int	main(int argc, char *argv[])
-// {
-// 	int	*arr;
-// 	int out_of_range;
-// 	int size;
-// 	int	i;
-
-// 	arr = parse(argc, (const char **)argv, &out_of_range, &size);
-// 	i = 0;
-// 	while (i < size)
-// 		printf("%d ", arr[i++]);
-// 	free(arr);
-// 	return (0);
-// }

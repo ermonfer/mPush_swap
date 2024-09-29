@@ -6,16 +6,17 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 18:03:28 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/28 15:52:27 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/29 19:47:34 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd);
-void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord);
-void	get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd);
-bool	out_of_bounds(int value, t_ord *ord);
+void		push_stack(t_stack *src, t_stack *dst, t_ord *ord, int limit);
+static void	get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd);
+static void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord);
+static void	get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd);
+static bool	out_of_bounds(int value, t_ord *ord);
 
 void	push_stack(t_stack *src, t_stack *dst, t_ord *ord, int limit)
 {
@@ -37,7 +38,7 @@ void	push_stack(t_stack *src, t_stack *dst, t_ord *ord, int limit)
 	}
 }
 
-void	get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd)
+static void	get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd)
 {
 	t_rated_node	cur;
 
@@ -58,7 +59,7 @@ void	get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd)
 	}
 }
 
-void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord)
+static void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord)
 {
 	if (out_of_bounds(rnd->src_nd.node->value, ord))
 	{
@@ -86,7 +87,7 @@ void	get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord)
 	get_cost(src, dst, rnd);
 }
 
-void	get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd)
+static void	get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd)
 {
 	int	src_nd_loc;
 	int	dst_nd_loc;
@@ -114,7 +115,7 @@ void	get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd)
 	}
 }
 
-bool	out_of_bounds(int value, t_ord *ord)
+static bool	out_of_bounds(int value, t_ord *ord)
 {
 	if (ord->gt(value, ord->top.node->value))
 		return (true);

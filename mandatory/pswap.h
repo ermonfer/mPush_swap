@@ -6,16 +6,14 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:26:00 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/29 19:18:20 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/29 19:47:50 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PSWAP_H
 # define PSWAP_H
-# include <stddef.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <stdbool.h>
 # include "./libft/include/libft.h"
 # include "./libft/include/extra.h"
@@ -27,7 +25,7 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-typedef struct s_valued_node
+typedef struct s_loc_node
 {
 	struct s_node	*node;
 	int				loc;
@@ -35,15 +33,15 @@ typedef struct s_valued_node
 
 typedef struct s_rated_node
 {
-	struct s_valued_node	src_nd;
-	struct s_valued_node	dst_nd;
+	struct s_loc_node		src_nd;
+	struct s_loc_node		dst_nd;
 	int						rate;
 }	t_rated_node;
 
 typedef struct s_stack
 {
 	struct s_node			*head;
-	struct s_valued_node	peak;
+	struct s_loc_node		peak;
 	int						size;
 	char					name;
 }	t_stack;
@@ -66,8 +64,6 @@ bool		lower(int a, int b);
 void		set_top(t_stack *stack, t_ord *ord);
 
 t_stacks	*init_stacks(int arr[], int nbs);
-void		print_stacks(t_stacks *stacks);
-void		print_circular_list(t_stack *stack);
 void		head_to_bottom(t_stack *stack, t_ord *ord);
 bool		stack_sorted(t_stack *stack, t_ord *ord, bool relative);
 
@@ -83,16 +79,10 @@ void		print_rots(t_rated_node *rots, t_stack *src);
 void		calc_rots(t_rated_node *rnd);
 
 void		push_stack(t_stack *src, t_stack *dst, t_ord *ord, int limit);
-void		get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd);
-void		get_rots(t_stack *src, t_stack *dst, t_ord *ord, t_rated_node *rnd);
-void		get_tg(t_stack *src, t_stack *dst, t_rated_node *rnd, t_ord *ord);
-void		get_cost(t_stack *src, t_stack *dst, t_rated_node *rnd);
 
 void		sort_2(t_stack *stack);
 void		sort_3(t_stack *stack, t_ord *ord, bool relative);
-void		push_halves(t_stacks *s, int median, int size);
 void		turk(t_stacks *s, int median, int size);
-
 
 int			*parse(int argc, const char *argv[], int *size, int *median);
 #endif

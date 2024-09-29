@@ -6,13 +6,15 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:57:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/28 16:00:31 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/29 19:29:57 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	head_to_bottom(t_stack *stack, t_ord *ord);
+void		head_to_bottom(t_stack *stack, t_ord *ord);
+t_stacks	*init_stacks(int arr[], int nbs);
+bool		stack_sorted(t_stack *stack, t_ord *ord, bool relative);
 
 t_stacks	*init_stacks(int arr[], int nbs)
 {
@@ -58,30 +60,6 @@ void	head_to_bottom(t_stack *stack, t_ord *ord)
 			write(1, (char []){'r', 'r', stack->name, '\n'}, 4);
 	}
 	stack->head = ord->top.node->next;
-}
-
-void	print_circular_list(t_stack *stack)
-{
-	int	size;
-
-	printf("stack %c:\n", stack->name);
-	if (stack->size == 0)
-	{
-		printf("vacio\n");
-		return ;
-	}
-	size = stack->size;
-	while (size--)
-	{
-		printf("%d\n", stack->head->value);
-		stack->head = stack->head->next;
-	}
-}
-
-void	print_stacks(t_stacks *stacks)
-{
-	print_circular_list(&stacks->a);
-	print_circular_list(&stacks->b);
 }
 
 bool	stack_sorted(t_stack *stack, t_ord *ord, bool relative)

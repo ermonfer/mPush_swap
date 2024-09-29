@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:45:28 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/04 18:17:18 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/29 21:44:49 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static char		*get_line(char **acc);
 static ssize_t	load_acc(char **acc, int fd);
 static char		*last_line(char **acc);
-static ssize_t	free_return(char *buffer, ssize_t bytes);
+static char		*gnl_concat(const char *s1, const char *s2);
 
 char	*ft_get_next_line(int fd)
 {
@@ -68,23 +68,17 @@ static ssize_t	load_acc(char **acc, int fd)
 			return (-1);
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes == -1 || bytes == 0)
-			return (free_return(buffer, bytes));
+			return (free(buffer), bytes);
 		buffer[bytes] = '\0';
 		tmp = ft_strjoin(*acc, buffer);
 		if (!tmp)
-			return (free_return(buffer, -1));
+			return (free(buffer), bytes);
 		free(*acc);
 		*acc = tmp;
 		if (ft_strchr(buffer, '\n'))
-			return (free_return(buffer, bytes));
+			return (free(buffer), bytes);
 		free(buffer);
 	}
-}
-
-static ssize_t	free_return(char *buffer, ssize_t bytes)
-{
-	free(buffer);
-	return (bytes);
 }
 
 static char	*last_line(char **acc)
@@ -99,4 +93,23 @@ static char	*last_line(char **acc)
 		return (line);
 	}
 	return (NULL);
+}
+
+static char	*gnl_concat(const char *s1, const char *s2)
+{
+	char	*res;
+	size_t	i;
+
+	if (s1 == NULL)
+		return (ft_strdup(s2));
+	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (res == NULL)
+		return (NULL);
+	i = 0;
+	while (*s1)
+		res[i++] = *s1++;
+	while (*s2)
+		res[i++] = *s2++;
+	res[i] = '\0';
+	return (res);
 }

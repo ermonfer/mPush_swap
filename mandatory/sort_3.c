@@ -6,15 +6,16 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 18:05:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/29 18:52:06 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/29 19:44:18 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	sort_2(t_stack *stack);
-void	sort_3(t_stack *stack, t_ord *ord, bool relative);
-// void	sort_4(t_stacks *s, t_ord *ord);
+void		sort_2(t_stack *stack);
+void		sort_3(t_stack *stack, t_ord *ord, bool relative);
+void		turk(t_stacks *s, int median, int size);
+static void	push_halves(t_stacks *s, int median, int size);
 
 void	sort_2(t_stack *stack)
 {
@@ -28,29 +29,6 @@ void	sort_3(t_stack *stack, t_ord *ord, bool relative)
 		swap(stack, 1);
 	if (!relative)
 		head_to_bottom(stack, ord);
-}
-
-// void	sort_4(t_stacks *s, t_ord *ord)
-// {
-// 	if (stack_sorted(&s->a, ord, 1))
-// 		return (head_to_bottom(&s->a, ord));
-// 	push(&s->a, &s->b, 1);
-// 	sort_3(&s->a, ord, 1);
-// 	push_stack(&s->a, &s->b, ord, 0);
-// 	head_to_bottom(&s->a, ord);
-// }
-
-void	push_halves(t_stacks *s, int median, int size)
-{
-	while (s->b.size < size / 2)
-	{
-		if (s->a.head->value < median)
-			push(&s->a, &s->b, 1);
-		else
-			rot(&s->a, 1);
-	}
-	while (s->a.size > 3)
-		push(&s->a, &s->b, 1);
 }
 
 void	turk(t_stacks *s, int median, int size)
@@ -69,4 +47,17 @@ void	turk(t_stacks *s, int median, int size)
 	sort_3(&s->a, &as, 1);
 	push_stack(&s->b, &s->a, &as, 0);
 	head_to_bottom(&s->a, &as);
+}
+
+static void	push_halves(t_stacks *s, int median, int size)
+{
+	while (s->b.size < size / 2)
+	{
+		if (s->a.head->value < median)
+			push(&s->a, &s->b, 1);
+		else
+			rot(&s->a, 1);
+	}
+	while (s->a.size > 3)
+		push(&s->a, &s->b, 1);
 }
