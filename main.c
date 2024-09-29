@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 17:50:02 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/29 15:52:49 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/29 16:53:54 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,21 @@ int	main(int argc, char *argv[])
 		return (0);
 	arr = parse(argc, (const char **)argv, &size, &median);
 	s = init_stacks(arr, size);
-	if (size == 2)
-	{
-		sort_2(&s->a);
-		return (0);
-	}
-	if (size == 3)
-	{
-		sort_3(&s->a, &(t_ord){greater, {NULL, 0}}, 0);
-		return (0);
-	}
-	else
-		turk(s);
+	print_stacks(s);
+	push_halves(s, median, size);
+	print_stacks(s);
+	// if (size == 2)
+	// {
+	// 	sort_2(&s->a);
+	// 	return (0);
+	// }
+	// if (size == 3)
+	// {
+	// 	sort_3(&s->a, &(t_ord){greater, {NULL, 0}}, 0);
+	// 	return (0);
+	// }
+	// else
+	// 	turk(s);
 	frees(arr, s);
 	return (0);
 }
