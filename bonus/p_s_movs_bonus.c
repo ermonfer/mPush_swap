@@ -6,11 +6,11 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:44:49 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/30 10:44:52 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:54:03 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "pswap_bonus.h"
 
 void	push(t_stack *src, t_stack *dst, bool print)
 {

@@ -6,11 +6,11 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:45:25 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/30 10:50:11 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:55:27 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "pswap_bonus.h"
 #include <stdio.h>
 #include <stdint.h>
 

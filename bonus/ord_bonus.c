@@ -6,11 +6,11 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:44:02 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/30 10:44:05 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:50:05 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "pswap_bonus.h"
 
 bool	greater(int a, int b)
 {

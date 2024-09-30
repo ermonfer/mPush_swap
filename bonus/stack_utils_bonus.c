@@ -6,11 +6,11 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:46:51 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/30 10:46:59 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:50:53 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "pswap_bonus.h"
 
 void		head_to_bottom(t_stack *stack, t_ord *ord);
 t_stacks	*init_stacks(int arr[], int nbs);

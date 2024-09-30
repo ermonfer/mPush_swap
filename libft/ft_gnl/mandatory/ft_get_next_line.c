@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:45:28 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/30 10:05:07 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:19:58 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static char		*get_line(char **acc);
 static ssize_t	load_acc(char **acc, int fd);
 static char		*last_line(char **acc);
-static char		*gnl_concat(const char *s1, const char *s2);
 char			*ft_get_next_line(int fd);
 
 char	*ft_get_next_line(int fd)
@@ -94,23 +93,4 @@ static char	*last_line(char **acc)
 		return (line);
 	}
 	return (NULL);
-}
-
-static char	*gnl_concat(const char *s1, const char *s2)
-{
-	char	*res;
-	size_t	i;
-
-	if (s1 == NULL)
-		return (ft_strdup(s2));
-	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (res == NULL)
-		return (NULL);
-	i = 0;
-	while (*s1)
-		res[i++] = *s1++;
-	while (*s2)
-		res[i++] = *s2++;
-	res[i] = '\0';
-	return (res);
 }

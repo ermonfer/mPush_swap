@@ -6,11 +6,11 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:46:39 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/30 10:46:40 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:59:00 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "pswap_bonus.h"
 
 void	rot(t_stack *stack, bool print)
 {

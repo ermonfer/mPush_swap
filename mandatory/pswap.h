@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:26:00 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/29 19:47:50 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:08:46 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
-# include "./libft/include/libft.h"
-# include "./libft/include/extra.h"
+# include "../libft/include/libft.h"
+# include "../libft/include/extra.h"
 
 typedef struct s_node
 {

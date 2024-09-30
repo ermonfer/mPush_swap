@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 23:30:38 by fmontero          #+#    #+#             */
-/*   Updated: 2024/08/02 20:26:24 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:48:26 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	len;
-	size_t			i;
+	unsigned int	i;
 	char			*result;
 
 	len = (unsigned int)ft_strlen(s);
