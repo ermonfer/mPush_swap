@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:45:28 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/29 21:44:49 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/30 10:05:07 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static char		*get_line(char **acc);
 static ssize_t	load_acc(char **acc, int fd);
 static char		*last_line(char **acc);
 static char		*gnl_concat(const char *s1, const char *s2);
+char			*ft_get_next_line(int fd);
 
 char	*ft_get_next_line(int fd)
 {

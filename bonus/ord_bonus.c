@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ord_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 21:12:57 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/29 21:47:56 by fmontero         ###   ########.fr       */
+/*   Created: 2024/09/30 10:44:02 by fmontero          #+#    #+#             */
+/*   Updated: 2024/09/30 10:44:05 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <pswap_bonus.h>
+#include "pswap.h"
 
-void	exec_mov(t_stacks *s, char *mov);
-
-int	main(int argc, char *argv[])
+bool	greater(int a, int b)
 {
-	int			*arr;
-	t_stacks	*s;
-	int			median;
-	int			size;
-	char		*mov;
+	return (a > b);
+}
 
-	if (argc < 2)
-		return (0);
-	arr = parse(argc, (const char **)argv, &size, &median);
-	s = init_stacks(arr, size);
-	exec_mov(s, mov);	
-	free(arr);
-	free(s);
-	return (0);
+bool	lower(int a, int b)
+{
+	return (a < b);
+}
+
+void	set_top(t_stack *stack, t_ord *ord)
+{
+	t_loc_node	cur;
+
+	cur = (t_loc_node){stack->head, 0};
+	ord->top = cur;
+	while (++cur.loc < stack->size)
+	{
+		cur.node = cur.node->next;
+		if (ord->gt(cur.node->value, ord->top.node->value))
+			ord->top = cur;
+	}
 }

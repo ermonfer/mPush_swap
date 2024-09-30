@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:26:00 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/29 21:19:00 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:11:16 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ void		sort_2(t_stack *stack);
 void		sort_3(t_stack *stack, t_ord *ord, bool relative);
 void		turk(t_stacks *s, int median, int size);
 
-int			*parse(int argc, const char *argv[], int *size, int *median);
+int			*parse(int argc, const char *argv[], int *size);
 #endif
