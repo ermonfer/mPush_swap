@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 18:04:10 by fmontero          #+#    #+#             */
-/*   Updated: 2024/10/01 18:10:38 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:33:04 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	*ft_free_return(void **ptrs, int n_ptrs, void *ret)
 	i = 0;
 	while (i < n_ptrs)
 		free(ptrs[i++]);
-    return ret;
+	return (ret);
 }

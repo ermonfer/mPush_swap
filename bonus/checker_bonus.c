@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:43:33 by fmontero          #+#    #+#             */
-/*   Updated: 2024/10/01 18:22:39 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:32:34 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,14 @@ int	main(int argc, char *argv[])
 		return (0);
 	arr = parse(argc, (const char **)argv, &sz);
 	s = init_stacks(arr, sz);
-	free(arr);
 	mov = ft_get_next_line(0);
 	while (mov)
 	{
 		if (!exec_mov(s, mov))
-		{	
+		{
 			write(2, "Error\n", 6);
 			return (free(s), free(mov), 1);
-		}	
+		}
 		free(mov);
 		mov = ft_get_next_line(0);
 	}
@@ -44,8 +43,7 @@ int	main(int argc, char *argv[])
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free(s);
-	return (0);
+	return (free(arr), free(s), 0);
 }
 
 static bool	exec_mov(t_stacks *s, const char *mov)
