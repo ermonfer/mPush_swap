@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:45:28 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/30 16:19:58 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/10/01 11:52:52 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,11 @@ static char	*last_line(char **acc)
 {
 	char	*line;
 
-	if (*acc)
-	{
+	if (*acc && **acc != '\0')
 		line = ft_strdup(*acc);
-		free(*acc);
-		*acc = NULL;
-		return (line);
-	}
-	return (NULL);
+	else
+		line = NULL;
+	free(*acc);
+	*acc = NULL;
+	return (line);
 }
