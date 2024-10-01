@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:43:33 by fmontero          #+#    #+#             */
-/*   Updated: 2024/10/01 18:19:14 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:22:39 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char *argv[])
 		if (!exec_mov(s, mov))
 		{	
 			write(2, "Error\n", 6);
-			return (free(s), free(mov), 0);
+			return (free(s), free(mov), 1);
 		}	
 		free(mov);
 		mov = ft_get_next_line(0);
