@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 19:15:55 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/25 11:38:12 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:07:06 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ int		ft_minint(int a, int b);
 int		ft_mod(int a, int b);
 int		ft_atoi_signal(const char *str, int *out_of_range);
 void	ft_free_split(char **split);
+void	*ft_free_return(void **ptrs, int n_ptrs, void *ret);
 #endif

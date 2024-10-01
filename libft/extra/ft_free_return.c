@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_max_min.c                                       :+:      :+:    :+:   */
+/*   ft_free_return.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 11:30:50 by fmontero          #+#    #+#             */
-/*   Updated: 2024/10/01 18:01:09 by fmontero         ###   ########.fr       */
+/*   Created: 2024/10/01 18:04:10 by fmontero          #+#    #+#             */
+/*   Updated: 2024/10/01 18:10:38 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "extra.h"
+#include "libft.h"
 
-int	ft_maxint(int a, int b)
+void	*ft_free_return(void **ptrs, int n_ptrs, void *ret)
 {
-	if (b > a)
-		return (b);
-	return (a);
-}
+	int	i;
 
-int	ft_minint(int a, int b)
-{
-	if (b < a)
-		return (b);
-	return (a);
+	i = 0;
+	while (i < n_ptrs)
+		free(ptrs[i++]);
+    return ret;
 }

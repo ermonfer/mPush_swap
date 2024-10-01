@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:09:11 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/29 19:34:58 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:05:33 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	check(uintptr_t condition, int *tokens, char **split)
 		return ;
 	ft_free_split(split);
 	free(tokens);
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
@@ -121,6 +121,7 @@ static int	total_tokens(int argc, const char *argv[])
 					str++;
 			}
 		}
+		check(counter, NULL, NULL);
 		total += counter;
 	}
 	return (total);

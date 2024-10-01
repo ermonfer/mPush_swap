@@ -6,10 +6,11 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:33:56 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/26 19:16:07 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:09:52 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "extra.h"
 #include "libft.h"
 
 void	ft_free_split(char **split)
