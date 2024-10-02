@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:45:25 by fmontero          #+#    #+#             */
-/*   Updated: 2024/10/01 17:34:56 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/10/02 09:42:36 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int	*alloc_tokens(int argc, const char *argv[], int *out, int *size)
 		{
 			check((uintptr_t)check_format(split[k]), tokens, split);
 			tokens[j++] = ft_atoi_signal(split[k++], out);
-			check((uintptr_t)out, tokens, split);
+			check((uintptr_t) !*out, tokens, split);
 		}
 		ft_free_split(split);
 	}

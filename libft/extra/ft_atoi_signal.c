@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:14:14 by fmontero          #+#    #+#             */
-/*   Updated: 2024/10/01 18:08:46 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/10/02 10:27:10 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_atoi_signal(const char *str, int *out_of_range)
 	if (*str == '-' || *str == '+')
 		sign -= 2 * (*str++ == '-');
 	cutoff = (sign == 1) * (INT_MAX / 10) - (sign == -1) * (INT_MIN / 10);
-	cutlim = (sign == 1) * (INT_MIN / 10) - (sign == -1) * (INT_MIN % 10);
+	cutlim = (sign == 1) * (INT_MAX % 10) - (sign == -1) * (INT_MIN % 10);
 	result = 0;
 	while (ft_isdigit(*str))
 	{

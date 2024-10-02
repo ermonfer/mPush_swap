@@ -6,7 +6,7 @@
 /*   By: fmontero <fmontero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 17:57:21 by fmontero          #+#    #+#             */
-/*   Updated: 2024/09/29 19:29:57 by fmontero         ###   ########.fr       */
+/*   Updated: 2024/10/02 08:35:28 by fmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	head_to_bottom(t_stack *stack, t_ord *ord)
 			write(1, (char []){'r', 'r', stack->name, '\n'}, 4);
 	}
 	stack->head = ord->top.node->next;
+	ord->top.loc = stack->size - 1;
 }
 
 bool	stack_sorted(t_stack *stack, t_ord *ord, bool relative)
